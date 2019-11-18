@@ -24,13 +24,13 @@ type Client struct {
 
 // ParamsForProduct is struct
 type ParamsForProduct struct {
-	Title       string
-	Description string
-	Photos      []string
-	Price       int
-	Discount    int
-	Tags        []string
-	Stock       int
+	Title       string   `json:"title"`
+	Description string   `json:"description"`
+	Photos      []string `json:"photos"`
+	Price       int      `json:"price"`
+	Discount    int      `json:"discount,omitempty"`
+	Tags        []string `json:"tags,omitempty"`
+	Stock       int      `json:"stock,omitempty"`
 }
 
 // New is webdriver with logger
