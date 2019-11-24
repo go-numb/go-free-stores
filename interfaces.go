@@ -118,7 +118,7 @@ func create(uuid string, w Worker, params *ParamsForProduct, page *agouti.Page) 
 		if err := page.Find(w.ChooseElement(true, "file")).Click(); err != nil {
 			return err
 		}
-		if err := page.Find("label > input").SendKeys(strings.Join(params.Photos, ",")); err != nil {
+		if err := page.Find("label > input").SendKeys(w.SetPhotos(params.Photos)); err != nil {
 			return err
 		}
 		time.Sleep(2 * time.Second)
@@ -138,7 +138,7 @@ func create(uuid string, w Worker, params *ParamsForProduct, page *agouti.Page) 
 		if err := page.FindByName("description").Fill(params.Description); err != nil {
 			return err
 		}
-		if err := page.Find(".hashtag_input_container > .form_input").Fill(w.SetPhotos(params.Photos)); err != nil {
+		if err := page.Find(".hashtag_input_container > .form_input").Fill(strings.Join(params.Tags, ",")); err != nil {
 			return err
 		}
 		if err := page.FindByName("quantity_0").Fill(fmt.Sprintf("%d", params.Stock)); err != nil {
@@ -164,7 +164,7 @@ func create(uuid string, w Worker, params *ParamsForProduct, page *agouti.Page) 
 		if err := page.Find(w.ChooseElement(true, "file")).SendKeys(w.SetPhotos(params.Photos)); err != nil {
 			return err
 		}
-		time.Sleep(2 * time.Second)
+		time.Sleep(10 * time.Second)
 
 		if err := page.FindByID("itemDetail_name").Fill(params.Title); err != nil {
 			return err
