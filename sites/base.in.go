@@ -77,5 +77,5 @@ func (p *Base) SetPhotos(files []string) string {
 		files = files[:20]
 	}
 
-	return strings.Join(files, ",")
+	return strings.Join(files, "\n")
 }
