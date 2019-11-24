@@ -38,7 +38,8 @@ func New(db *mgo.Session, log *logrus.Logger) *Client {
 	d := agouti.ChromeDriver(
 		agouti.ChromeOptions(
 			"args", []string{
-				"--headless", // headlessモードの指定
+				// modeHeadressの場合、linkが見つからない
+				// "--headless", // headlessモードの指定
 				"--disable-gpu",
 				"no-sandbox",
 				"--window-size=1280,800", // ウィンドウサイズの指定
