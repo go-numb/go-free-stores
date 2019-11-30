@@ -39,8 +39,10 @@ func New(db *mgo.Session, log *logrus.Logger) *Client {
 		agouti.ChromeOptions(
 			"args", []string{
 				// modeHeadressの場合、linkが見つからない
-				// "--headless", // headlessモードの指定
+				"--headless", // headlessモードの指定
 				"--disable-gpu",
+				// User-Agentがないとheadless modeでjavascriptを起動できない
+				`--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36"`,
 				"no-sandbox",
 				"--window-size=1280,800", // ウィンドウサイズの指定
 			}),
